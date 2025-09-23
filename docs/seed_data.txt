@@ -1,0 +1,174 @@
+-- SQL код для заполнения базы данных тестовыми данными
+
+-- Данные для таблицы job_titles
+INSERT INTO job_titles (title, daily_salary) VALUES
+('Администратор', 5000.00),
+('Менеджер', 4000.00),
+('Механик', 3500.00),
+('Продавец', 3000.00);
+
+-- Данные для таблицы salons
+INSERT INTO salons (name, address, phone) VALUES
+('Главный салон', 'ул. Ленина, 1', '8-800-123-45-67'),
+('Филиал №1', 'ул. Пушкина, 10', '8-800-123-45-68');
+
+-- Данные для таблицы employees
+INSERT INTO employees (salon_id, last_name, first_name, middle_name, phone, email, password, job_title_id) VALUES
+(1, 'Админов', 'Админ', 'Админович', '89991112233', 'admin@example.com', 'password', 1), -- Администратор
+(1, 'Иванов', 'Иван', 'Иванович', '89991112234', 'ivanov@example.com', 'password', 2), -- Менеджер
+(1, 'Петров', 'Петр', 'Петрович', '89991112235', 'petrov@example.com', 'password', 3), -- Механик
+(1, 'Сидоров', 'Сидор', 'Сидорович', '89991112236', 'sidorov@example.com', 'password', 4); -- Продавец
+
+-- Данные для таблицы clients
+INSERT INTO clients (last_name, first_name, middle_name, phone, email, password, address, passport) VALUES
+('Иванов', 'Иван', 'Иванович', '89991112233', 'ivanov@example.com', 'password', 'ул. Ленина, 1', '1234 567890'),
+('Петров', 'Петр', 'Петрович', '89991112234', 'petrov@example.com', 'password', 'ул. Пушкина, 2', '2345 678901'),
+('Сидоров', 'Сидор', 'Сидорович', '89991112235', 'sidorov@example.com', 'password', 'ул. Гагарина, 3', '3456 789012');
+
+-- Данные для таблицы car_brands
+INSERT INTO car_brands (name) VALUES
+('Toyota'),
+('Honda'),
+('BMW'),
+('Mercedes-Benz'),
+('Audi'),
+('Volkswagen'),
+('Ford'),
+('Chevrolet'),
+('Hyundai'),
+('Kia');
+
+-- Данные для таблицы car_models
+INSERT INTO car_models (brand_id, name, color, seats, trunk_volume, horsepower, engine_volume, fuel_type) VALUES
+((SELECT id FROM car_brands WHERE name = 'Toyota'), 'Camry', 'Белый', 5, 500.00, 200, 2.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Toyota'), 'Corolla', 'Черный', 5, 450.00, 150, 1.80, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Toyota'), 'RAV4', 'Серебристый', 5, 580.00, 180, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Toyota'), 'Land Cruiser', 'Серый', 7, 700.00, 280, 4.00, 'Дизель'),
+((SELECT id FROM car_brands WHERE name = 'Toyota'), 'Prius', 'Синий', 5, 400.00, 120, 1.80, 'Гибрид'),
+((SELECT id FROM car_brands WHERE name = 'Honda'), 'Civic', 'Красный', 5, 420.00, 180, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Honda'), 'Accord', 'Белый', 5, 480.00, 190, 2.40, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Honda'), 'CR-V', 'Черный', 5, 550.00, 190, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Honda'), 'Pilot', 'Серебристый', 7, 600.00, 280, 3.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Honda'), 'Odyssey', 'Серый', 7, 650.00, 280, 3.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'BMW'), '3 Series', 'Черный', 5, 480.00, 250, 3.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'BMW'), '5 Series', 'Белый', 5, 520.00, 300, 3.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'BMW'), 'X5', 'Серебристый', 5, 650.00, 340, 3.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'BMW'), 'X3', 'Серый', 5, 550.00, 280, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'BMW'), '7 Series', 'Черный', 5, 560.00, 400, 4.40, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Mercedes-Benz'), 'C-Class', 'Серебристый', 5, 480.00, 200, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Mercedes-Benz'), 'E-Class', 'Белый', 5, 500.00, 250, 2.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Mercedes-Benz'), 'S-Class', 'Черный', 5, 530.00, 300, 3.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Mercedes-Benz'), 'GLC', 'Серый', 5, 550.00, 220, 2.00, 'Дизель'),
+((SELECT id FROM car_brands WHERE name = 'Mercedes-Benz'), 'GLE', 'Синий', 5, 600.00, 270, 3.00, 'Дизель'),
+((SELECT id FROM car_brands WHERE name = 'Audi'), 'A4', 'Белый', 5, 460.00, 190, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Audi'), 'A6', 'Черный', 5, 530.00, 250, 2.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Audi'), 'Q5', 'Серебристый', 5, 610.00, 230, 2.00, 'Дизель'),
+((SELECT id FROM car_brands WHERE name = 'Audi'), 'Q7', 'Серый', 7, 770.00, 320, 3.00, 'Дизель'),
+((SELECT id FROM car_brands WHERE name = 'Audi'), 'A8', 'Синий', 5, 520.00, 300, 3.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Volkswagen'), 'Passat', 'Серый', 5, 480.00, 180, 1.80, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Volkswagen'), 'Golf', 'Белый', 5, 380.00, 150, 1.40, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Volkswagen'), 'Tiguan', 'Черный', 5, 615.00, 200, 2.00, 'Дизель'),
+((SELECT id FROM car_brands WHERE name = 'Volkswagen'), 'Touareg', 'Синий', 5, 999.00, 340, 3.00, 'Дизель'),
+((SELECT id FROM car_brands WHERE name = 'Volkswagen'), 'Polo', 'Красный', 5, 460.00, 110, 1.60, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Ford'), 'Focus', 'Синий', 5, 370.00, 125, 1.60, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Ford'), 'Mustang', 'Красный', 4, 382.00, 450, 5.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Ford'), 'Explorer', 'Черный', 7, 595.00, 290, 3.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Ford'), 'F-150', 'Белый', 5, 999.00, 400, 5.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Ford'), 'Escape', 'Серебристый', 5, 456.00, 180, 1.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Chevrolet'), 'Malibu', 'Белый', 5, 447.00, 160, 1.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Chevrolet'), 'Camaro', 'Желтый', 4, 258.00, 455, 6.20, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Chevrolet'), 'Tahoe', 'Черный', 7, 722.00, 355, 5.30, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Chevrolet'), 'Silverado', 'Серебристый', 5, 999.00, 420, 6.20, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Chevrolet'), 'Equinox', 'Синий', 5, 846.00, 170, 1.50, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Hyundai'), 'Sonata', 'Серый', 5, 510.00, 180, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Hyundai'), 'Elantra', 'Белый', 5, 407.00, 147, 1.60, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Hyundai'), 'Tucson', 'Черный', 5, 513.00, 161, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Hyundai'), 'Santa Fe', 'Синий', 7, 625.00, 191, 2.40, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Hyundai'), 'Accent', 'Красный', 5, 389.00, 120, 1.40, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Kia'), 'Optima', 'Белый', 5, 510.00, 180, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Kia'), 'Sorento', 'Серебристый', 7, 660.00, 240, 2.20, 'Дизель'),
+((SELECT id FROM car_brands WHERE name = 'Kia'), 'Sportage', 'Черный', 5, 491.00, 185, 2.00, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Kia'), 'Rio', 'Красный', 5, 480.00, 123, 1.60, 'Бензин'),
+((SELECT id FROM car_brands WHERE name = 'Kia'), 'Forte', 'Синий', 5, 434.00, 147, 2.00, 'Бензин');
+
+-- Данные для таблицы car_statuses
+INSERT INTO car_statuses (name) VALUES
+('В наличии'),
+('Зарезервирован'),
+('Продан'),
+('На ремонте'),
+('Списан');
+
+-- Данные для таблицы car_options
+INSERT INTO car_options (name) VALUES
+('Кондиционер'),
+('Кожаные сиденья'),
+('Bluetooth'),
+('Камера заднего вида'),
+('Навигационная система'),
+('Подогрев сидений'),
+('Люк'),
+('Легкосплавные диски'),
+('Круиз-контроль'),
+('Парктроник');
+
+-- Данные для таблицы car_product_types
+INSERT INTO car_product_types (name) VALUES
+('Запчасти'),
+('Масла'),
+('Фильтры'),
+('Аксессуары'),
+('Шины'),
+('Автохимия');
+
+-- Данные для таблицы cars (примеры, так как они генерируются динамически)
+INSERT INTO cars (salon_id, brand_id, model_id, status_id, vin, registration_number, year, price, mileage, description) VALUES
+(1, (SELECT id FROM car_brands WHERE name = 'Toyota'), (SELECT id FROM car_models WHERE name = 'Camry'), (SELECT id FROM car_statuses WHERE name = 'В наличии'), 'VIN000001', 'A123BC45', 2020, 1500000.00, 50000.00, 'Тестовый автомобиль Toyota Camry'),
+(1, (SELECT id FROM car_brands WHERE name = 'Honda'), (SELECT id FROM car_models WHERE name = 'CR-V'), (SELECT id FROM car_statuses WHERE name = 'Зарезервирован'), 'VIN000002', 'B456DE78', 2021, 1800000.00, 30000.00, 'Тестовый автомобиль Honda CR-V'),
+(1, (SELECT id FROM car_brands WHERE name = 'BMW'), (SELECT id FROM car_models WHERE name = 'X5'), (SELECT id FROM car_statuses WHERE name = 'На ремонте'), 'VIN000003', 'C789FG01', 2019, 2500000.00, 75000.00, 'Тестовый автомобиль BMW X5');
+
+-- Данные для таблицы car_car_option (примеры)
+INSERT INTO car_car_option (car_id, car_option_id) VALUES
+((SELECT id FROM cars WHERE vin = 'VIN000001'), (SELECT id FROM car_options WHERE name = 'Кондиционер')),
+((SELECT id FROM cars WHERE vin = 'VIN000001'), (SELECT id FROM car_options WHERE name = 'Bluetooth')),
+((SELECT id FROM cars WHERE vin = 'VIN000002'), (SELECT id FROM car_options WHERE name = 'Подогрев сидений')),
+((SELECT id FROM cars WHERE vin = 'VIN000003'), (SELECT id FROM car_options WHERE name = 'Камера заднего вида'));
+
+-- Данные для таблицы car_products
+INSERT INTO car_products (type_id, name, description, price, quantity) VALUES
+((SELECT id FROM car_product_types WHERE name = 'Масла'), 'Масло моторное 5W-30', 'Синтетическое моторное масло 5W-30, 4л', 2500.00, 50),
+((SELECT id FROM car_product_types WHERE name = 'Запчасти'), 'Масляный фильтр', 'Масляный фильтр универсальный', 500.00, 100),
+((SELECT id FROM car_product_types WHERE name = 'Фильтры'), 'Воздушный фильтр', 'Воздушный фильтр салона', 800.00, 75),
+((SELECT id FROM car_product_types WHERE name = 'Запчасти'), 'Тормозные колодки', 'Передние тормозные колодки', 3500.00, 30),
+((SELECT id FROM car_product_types WHERE name = 'Аксессуары'), 'Аккумулятор', 'Аккумулятор 60А/ч', 8000.00, 20);
+
+-- Данные для таблицы deals (примеры, так как генерируются динамически)
+INSERT INTO deals (car_id, client_id, employee_id, type, amount, description, date) VALUES
+((SELECT id FROM cars WHERE vin = 'VIN000001'), (SELECT id FROM clients WHERE email = 'ivanov@example.com'), (SELECT id FROM employees WHERE email = 'ivanov@example.com'), 'sale', 1500000.00, 'Тестовая сделка #1', '2023-10-26'),
+((SELECT id FROM cars WHERE vin = 'VIN000002'), (SELECT id FROM clients WHERE email = 'petrov@example.com'), (SELECT id FROM employees WHERE email = 'ivanov@example.com'), 'repair', 25000.00, 'Тестовая сделка #2', '2023-10-20'),
+((SELECT id FROM cars WHERE vin = 'VIN000003'), (SELECT id FROM clients WHERE email = 'sidorov@example.com'), (SELECT id FROM employees WHERE email = 'petrov@example.com'), 'sale', 2500000.00, 'Тестовая сделка #3', '2023-10-15');
+
+-- Данные для таблицы repair_works (примеры, так как генерируются динамически)
+INSERT INTO repair_works (car_id, employee_id, description, start_date, end_date, status, cost) VALUES
+((SELECT id FROM cars WHERE vin = 'VIN000001'), (SELECT id FROM employees WHERE email = 'petrov@example.com'), 'Замена масла и фильтров', '2023-10-20', '2023-10-22', 'completed', 7500.00),
+((SELECT id FROM cars WHERE vin = 'VIN000002'), (SELECT id FROM employees WHERE email = 'petrov@example.com'), 'Диагностика двигателя', '2023-10-25', NULL, 'in_progress', 12000.00),
+((SELECT id FROM cars WHERE vin = 'VIN000003'), (SELECT id FROM employees WHERE email = 'petrov@example.com'), 'Ремонт тормозной системы', '2023-10-10', '2023-10-12', 'completed', 15000.00);
+
+-- Данные для таблицы salaries (примеры, так как генерируются динамически)
+INSERT INTO salaries (employee_id, payment_date, amount, description) VALUES
+((SELECT id FROM employees WHERE email = 'admin@example.com'), '2023-10-01', (SELECT daily_salary * 20 FROM job_titles WHERE title = 'Администратор'), 'Monthly salary'),
+((SELECT id FROM employees WHERE email = 'ivanov@example.com'), '2023-10-01', (SELECT daily_salary * 20 FROM job_titles WHERE title = 'Менеджер'), 'Monthly salary'),
+((SELECT id FROM employees WHERE email = 'petrov@example.com'), '2023-10-01', (SELECT daily_salary * 20 FROM job_titles WHERE title = 'Механик'), 'Monthly salary'),
+((SELECT id FROM employees WHERE email = 'admin@example.com'), '2023-09-01', (SELECT daily_salary * 20 FROM job_titles WHERE title = 'Администратор'), 'Monthly salary');
+
+-- Данные для таблицы premiums (примеры, так как генерируются динамически)
+INSERT INTO premiums (employee_id, payment_date, amount, description) VALUES
+((SELECT id FROM employees WHERE email = 'admin@example.com'), '2023-10-31', (SELECT daily_salary * 20 * 0.2 FROM job_titles WHERE title = 'Администратор'), 'Monthly premium'),
+((SELECT id FROM employees WHERE email = 'ivanov@example.com'), '2023-10-31', (SELECT daily_salary * 20 * 0.2 FROM job_titles WHERE title = 'Менеджер'), 'Monthly premium'),
+((SELECT id FROM employees WHERE email = 'petrov@example.com'), '2023-09-30', (SELECT daily_salary * 20 * 0.2 FROM job_titles WHERE title = 'Механик'), 'Monthly premium');
+
+-- Данные для таблицы consultation_requests (примеры, так как генерируются динамически)
+INSERT INTO consultation_requests (user_id, car_id, scheduled_at, status, notes) VALUES
+((SELECT id FROM clients WHERE email = 'ivanov@example.com'), (SELECT id FROM cars WHERE vin = 'VIN000001'), '2023-11-01 10:00:00', 'pending', 'Тестовая заявка на консультацию о Toyota Camry'),
+((SELECT id FROM clients WHERE email = 'petrov@example.com'), (SELECT id FROM cars WHERE vin = 'VIN000002'), '2023-11-02 11:30:00', 'processed', 'Тестовая заявка на консультацию о Honda CR-V'),
+((SELECT id FROM clients WHERE email = 'sidorov@example.com'), (SELECT id FROM cars WHERE vin = 'VIN000003'), '2023-11-03 14:00:00', 'completed', 'Тестовая заявка на консультацию о BMW X5'); 

@@ -1,0 +1,1 @@
+@if($employee && $employee->jobTitle && $employee->jobTitle->title === 'Администратор') 
