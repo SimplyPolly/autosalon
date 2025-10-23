@@ -18,6 +18,6 @@ class CarStatus extends Model
 
     public function cars(): HasMany
     {
-        return $this->hasMany(Cars::class, 'status_id');
+        return $this->hasMany(Car::class, 'status_id');
     }
 } 

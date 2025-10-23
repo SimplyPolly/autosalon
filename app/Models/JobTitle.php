@@ -19,6 +19,6 @@ class JobTitle extends Model
 
     public function employees(): HasMany
     {
-        return $this->hasMany(Employee::class, 'employee_id');
+        return $this->hasMany(Employee::class, 'job_title_id');
     }
 }

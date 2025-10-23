@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class CarProducts extends Model
+class CarProduct extends Model
 {
     protected $table = 'car_products';
     protected $primaryKey = 'id';

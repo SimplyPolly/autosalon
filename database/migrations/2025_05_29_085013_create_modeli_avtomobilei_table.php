@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('car_models', function (Blueprint $table) {
-            $table->id();            
+            $table->id();
             $table->string('name');
-            $table->foreignId('brand_id')->constrained('car_brands')->onDelete('restrict'); // запрет на удаление связной записи
+            $table->foreignId('brand_id')->constrained('car_brands')->onDelete('restrict');
             $table->string('carcass');
             $table->string('engine');
-            $table->float('engine_capacity');
+            $table->decimal('engine_capacity', 4, 1); 
         });
     }
 
@@ -28,5 +28,4 @@ return new class extends Migration
     {
         Schema::dropIfExists('car_models');
     }
-    
 };

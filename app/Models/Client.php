@@ -32,8 +32,8 @@ class Client extends Model
         return $this->hasMany(Deals::class, 'client_id');
     }
 
-    public function consultation(): HasMany
+    public function consultations(): HasMany
     {
-        return $this->hasMany(ConsultationRequest::class, 'consultation_id');
+        return $this->hasMany(ConsultationRequest::class, 'client_id');
     }
 } 

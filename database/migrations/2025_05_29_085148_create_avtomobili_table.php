@@ -22,10 +22,9 @@ return new class extends Migration
             $table->integer('year');
             $table->string('color')->nullable();
             $table->decimal('price', 12, 2);
-            $table->decimal('mileage', 10, 2)->nullable();
+            $table->decimal('mileage', 10, 2)->nullable(); 
             $table->text('description')->nullable();
-            $table->text('car_option')->nullable(); // доп опции к авто
-            $table->timestamps();
+            $table->text('car_option')->nullable(); // хранит JSON
         });
     }
 

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Cars extends Model
+class Car extends Model
 {
     protected $table = 'cars';
     protected $primaryKey = 'id';
@@ -38,12 +38,12 @@ class Cars extends Model
 
     public function brand(): BelongsTo
     {
-        return $this->belongsTo(CarBrands::class, 'brand_id');
+        return $this->belongsTo(CarBrand::class, 'brand_id');
     }
 
     public function model(): BelongsTo
     {
-        return $this->belongsTo(CarModels::class, 'model_id');
+        return $this->belongsTo(CarModel::class, 'model_id');
     }
 
     public function status(): BelongsTo
@@ -53,6 +53,6 @@ class Cars extends Model
 
     public function deals(): HasMany
     {
-        return $this->hasMany(Deals::class, 'car_id');
+        return $this->hasMany(Deal::class, 'car_id');
     }
 } 

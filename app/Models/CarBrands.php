@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class CarBrands extends Model
+class CarBrand extends Model
 {
     use HasFactory;
 
@@ -26,6 +26,6 @@ class CarBrands extends Model
 
     public function models(): HasMany
     {
-        return $this->hasMany(CarModels::class, 'car_brand_id');
+        return $this->hasMany(CarModel::class, 'car_brand_id');
     }
 }

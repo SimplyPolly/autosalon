@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,9 +40,9 @@ class Employee extends Authenticatable
         return $this->belongsTo(JobTitle::class, 'job_title_id');
     }
 
-    public function consultation(): HasMany
+    public function consultations(): HasMany
     {
-        return $this->hasMany(ConsultationRequest::class, 'consultation_id');
+        return $this->hasMany(ConsultationRequest::class, 'employee_id');
     }
 
     public function deals(): HasMany

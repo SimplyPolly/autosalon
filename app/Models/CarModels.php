@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-class CarModels extends Model
+class CarModel extends Model
 {
     use HasFactory;
 
@@ -24,11 +24,11 @@ class CarModels extends Model
     ];
     public function brand(): BelongsTo
     {
-        return $this->belongsTo(CarBrands::class, 'brand_id', 'id');
+        return $this->belongsTo(CarBrand::class, 'brand_id');
     }
 
     public function cars(): HasMany
     {
-        return $this->hasMany(Cars::class, 'model_id');
+        return $this->hasMany(Car::class, 'model_id');
     }
 }

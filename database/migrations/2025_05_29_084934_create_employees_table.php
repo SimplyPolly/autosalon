@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('password');
-            $table->decimal('salary', 10, 2)->nullable();
-            $table->timestamps();
+            // Убрано поле `salary` — оклад определяется через job_title
+            // Убрано ->timestamps(), так как $timestamps = false в модели
         });
     }
 

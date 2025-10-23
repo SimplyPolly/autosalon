@@ -101,11 +101,11 @@ class CarController extends Controller
             'vin' => 'required|string|unique:cars,vin', 
             'registration_number' => 'required|string|unique:cars,registration_number', 
             'year' => 'required|integer|min:1900|max:' . (date('Y') + 1), 
-            'color' => 'required|string|exist:cars,color', 
+            'color' => 'required|string|max:255', 
             'price' => 'required|numeric|min:0',
-            'mileage' => 'required|string|exists:cars,mileage', 
-            'description' => 'required|string|exist:cars,description', 
-            'car_option' => 'required|string|exist:cars,car_option',
+            'mileage' => 'required|string|max:255', 
+            'description' => 'required|string', 
+            'car_option' => 'required|string',
         ];
 
         // Если пользователь является сотрудником, добавляем валидацию для id_статуса
@@ -154,7 +154,7 @@ class CarController extends Controller
             'salon'
         ]);
 
-        $cars = Cars::with(['brand', 'model', 'status', 'year', 'price', 'color', 'salon']);
+        $cars = Cars::with(['brand', 'model', 'status', 'salon']);
 
         // Если пользователь не является сотрудником, фильтруем по статусу "В наличии"
         if (!Auth::guard('employee')->check()) {

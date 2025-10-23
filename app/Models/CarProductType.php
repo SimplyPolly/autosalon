@@ -14,18 +14,8 @@ class CarProductType extends Model
         'name'
     ];
 
-    public function getRouteKeyName()
-    {
-        return 'id';
-    }
-
-    public function getRouteKey()
-    {
-        return $this->{$this->getRouteKeyName()};
-    }
-
     public function products(): HasMany
     {
-        return $this->hasMany(CarProducts::class, 'type_id');
+        return $this->hasMany(CarProduct::class, 'type_id');
     }
 }

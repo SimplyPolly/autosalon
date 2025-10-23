@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Deals extends Model
+class Deal extends Model
 {
     protected $table = 'deals';
     protected $primaryKey = 'id';
